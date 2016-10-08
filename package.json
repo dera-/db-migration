@@ -1,0 +1,15 @@
+{
+  "name": "db-migration",
+  "version": "1.0.0",
+  "description": "DBのマイグレーション用レポジトリなのですよ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "dera-",
+  "license": "ISC",
+  "dependencies": {
+    "mysql": "^2.11.1",
+    "sequelize": "^3.24.3"
+  }
+}
