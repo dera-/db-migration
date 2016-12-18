@@ -10,57 +10,37 @@ module.exports = {
       return queryInterface.createTable('users', { id: Sequelize.INTEGER });
     */
     return queryInterface.createTable(
-      'player_ai',
+      'game',
       {
         id: {
           type: Sequelize.INTEGER.UNSIGNED,
           primaryKey: true,
           autoIncrement: true
         },
-        //foreign key usage
-        player_id: {
+        ai_id_1: {
           type: Sequelize.INTEGER.UNSIGNED,
           allowNull: false,
           references: {
-            model: 'player',
+            model: 'player_ai',
             key: 'id'
           },
           onUpdate: 'cascade',
           onDelete: 'cascade'
         },
-        name: {
-          type: Sequelize.STRING,
-          allowNull: false,
-          defaultValue: 'AIちゃん'
-        },
-        file_key: {
-          type: Sequelize.STRING,
-          allowNull: false
-        },
-        battle_count: {
+        ai_id_2: {
           type: Sequelize.INTEGER.UNSIGNED,
           allowNull: false,
-          defaultValue: 0
+          references: {
+            model: 'player_ai',
+            key: 'id'
+          },
+          onUpdate: 'cascade',
+          onDelete: 'cascade'
         },
-        win_count: {
-          type: Sequelize.INTEGER.UNSIGNED,
+        odds: {
+          type: Sequelize.FLOAT.UNSIGNED,
           allowNull: false,
-          defaultValue: 0
-        },
-        teach_count: {
-          type: Sequelize.BIGINT.UNSIGNED,
-          allowNull: false,
-          defaultValue: 0
-        },
-        pot_get_count: {
-          type: Sequelize.BIGINT.UNSIGNED,
-          allowNull: false,
-          defaultValue: 0
-        },
-        right_fold_count: {
-          type: Sequelize.BIGINT.UNSIGNED,
-          allowNull: false,
-          defaultValue: 0
+          defaultValue: 1.0
         },
         created_at: {
           type: Sequelize.DATE,
@@ -84,6 +64,6 @@ module.exports = {
       Example:
       return queryInterface.dropTable('users');
     */
-    return queryInterface.dropTable('player_ai');
+    return queryInterface.dropTable('game');
   }
 };

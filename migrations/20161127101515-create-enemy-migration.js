@@ -10,57 +10,29 @@ module.exports = {
       return queryInterface.createTable('users', { id: Sequelize.INTEGER });
     */
     return queryInterface.createTable(
-      'player_ai',
+      'enemy',
       {
         id: {
           type: Sequelize.INTEGER.UNSIGNED,
           primaryKey: true,
           autoIncrement: true
         },
-        //foreign key usage
-        player_id: {
-          type: Sequelize.INTEGER.UNSIGNED,
-          allowNull: false,
-          references: {
-            model: 'player',
-            key: 'id'
-          },
-          onUpdate: 'cascade',
-          onDelete: 'cascade'
-        },
         name: {
           type: Sequelize.STRING,
           allowNull: false,
           defaultValue: 'AIちゃん'
         },
+        type: {
+          type: Sequelize.STRING,
+          allowNull: false
+        },
         file_key: {
           type: Sequelize.STRING,
           allowNull: false
         },
-        battle_count: {
-          type: Sequelize.INTEGER.UNSIGNED,
-          allowNull: false,
-          defaultValue: 0
-        },
-        win_count: {
-          type: Sequelize.INTEGER.UNSIGNED,
-          allowNull: false,
-          defaultValue: 0
-        },
-        teach_count: {
-          type: Sequelize.BIGINT.UNSIGNED,
-          allowNull: false,
-          defaultValue: 0
-        },
-        pot_get_count: {
-          type: Sequelize.BIGINT.UNSIGNED,
-          allowNull: false,
-          defaultValue: 0
-        },
-        right_fold_count: {
-          type: Sequelize.BIGINT.UNSIGNED,
-          allowNull: false,
-          defaultValue: 0
+        local_image_path: {
+          type: Sequelize.STRING,
+          allowNull: false
         },
         created_at: {
           type: Sequelize.DATE,
@@ -84,6 +56,6 @@ module.exports = {
       Example:
       return queryInterface.dropTable('users');
     */
-    return queryInterface.dropTable('player_ai');
+    return queryInterface.dropTable('enemy');
   }
 };

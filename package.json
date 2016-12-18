@@ -4,12 +4,15 @@
   "description": "DBのマイグレーション用レポジトリなのですよ",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "migration:create": "sequelize migration:create",
+    "migrate": "sequelize db:migrate",
+    "rollback": "sequelize db:migrate:undo"
   },
   "author": "dera-",
   "license": "ISC",
   "dependencies": {
     "mysql": "^2.11.1",
-    "sequelize": "^3.24.3"
+    "sequelize": "^3.24.3",
+    "sequelize-cli": "^2.4.0"
   }
 }

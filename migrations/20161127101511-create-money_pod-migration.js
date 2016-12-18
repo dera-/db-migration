@@ -10,14 +10,13 @@ module.exports = {
       return queryInterface.createTable('users', { id: Sequelize.INTEGER });
     */
     return queryInterface.createTable(
-      'player_ai',
+      'money_pod',
       {
         id: {
           type: Sequelize.INTEGER.UNSIGNED,
           primaryKey: true,
           autoIncrement: true
         },
-        //foreign key usage
         player_id: {
           type: Sequelize.INTEGER.UNSIGNED,
           allowNull: false,
@@ -28,39 +27,30 @@ module.exports = {
           onUpdate: 'cascade',
           onDelete: 'cascade'
         },
-        name: {
-          type: Sequelize.STRING,
-          allowNull: false,
-          defaultValue: 'AIちゃん'
-        },
-        file_key: {
-          type: Sequelize.STRING,
-          allowNull: false
-        },
-        battle_count: {
+        money: {
           type: Sequelize.INTEGER.UNSIGNED,
           allowNull: false,
           defaultValue: 0
         },
-        win_count: {
+        game_id: {
           type: Sequelize.INTEGER.UNSIGNED,
           allowNull: false,
-          defaultValue: 0
+          references: {
+            model: 'game',
+            key: 'id'
+          }
         },
-        teach_count: {
-          type: Sequelize.BIGINT.UNSIGNED,
+        is_player: {
+          type: Sequelize.BOOLEAN,
           allowNull: false,
-          defaultValue: 0
         },
-        pot_get_count: {
-          type: Sequelize.BIGINT.UNSIGNED,
+        bet_target: {
+          type: Sequelize.INTEGER.UNSIGNED,
           allowNull: false,
-          defaultValue: 0
-        },
-        right_fold_count: {
-          type: Sequelize.BIGINT.UNSIGNED,
-          allowNull: false,
-          defaultValue: 0
+          references: {
+            model: 'player_ai',
+            key: 'id'
+          }
         },
         created_at: {
           type: Sequelize.DATE,
@@ -84,6 +74,6 @@ module.exports = {
       Example:
       return queryInterface.dropTable('users');
     */
-    return queryInterface.dropTable('player_ai');
+    return queryInterface.dropTable('money_pod');
   }
 };

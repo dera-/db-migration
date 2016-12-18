@@ -2,35 +2,22 @@
 
 module.exports = {
   up: function (queryInterface, Sequelize) {
-    /*
-      Add altering commands here.
-      Return a promise to correctly handle asynchronicity.
-
-      Example:
-      return queryInterface.createTable('users', { id: Sequelize.INTEGER });
-    */
     return queryInterface.createTable(
-      'player',
+      'serial_code',
       {
         id: {
           type: Sequelize.INTEGER.UNSIGNED,
           primaryKey: true,
           autoIncrement: true
         },
-        name: {
-          type: Sequelize.STRING,
+        code: {
+          type: Sequelize.UUID,
           allowNull: false,
-          defaultValue: '名無しさん'
+          unique: true
         },
-        money: {
+        user_id: {
           type: Sequelize.INTEGER.UNSIGNED,
-          allowNull: false,
-          defaultValue: 0
-        },
-        paid: {
-          type: Sequelize.BOOLEAN,
-          allowNull: false,
-          defaultValue: 0
+          allowNull: true
         },
         created_at: {
           type: Sequelize.DATE,
@@ -47,13 +34,6 @@ module.exports = {
   },
 
   down: function (queryInterface, Sequelize) {
-    /*
-      Add reverting commands here.
-      Return a promise to correctly handle asynchronicity.
-
-      Example:
-      return queryInterface.dropTable('users');
-    */
-    return queryInterface.dropTable('player');
+    return queryInterface.dropTable('serial_code');
   }
 };
