@@ -33,10 +33,6 @@ module.exports = {
           allowNull: false,
           defaultValue: 'AIちゃん'
         },
-        file_key: {
-          type: Sequelize.STRING,
-          allowNull: false
-        },
         battle_count: {
           type: Sequelize.INTEGER.UNSIGNED,
           allowNull: false,
@@ -52,7 +48,17 @@ module.exports = {
           allowNull: false,
           defaultValue: 0
         },
+        hand_count: {
+          type: Sequelize.BIGINT.UNSIGNED,
+          allowNull: false,
+          defaultValue: 0
+        },
         pot_get_count: {
+          type: Sequelize.BIGINT.UNSIGNED,
+          allowNull: false,
+          defaultValue: 0
+        },
+        fold_count: {
           type: Sequelize.BIGINT.UNSIGNED,
           allowNull: false,
           defaultValue: 0
